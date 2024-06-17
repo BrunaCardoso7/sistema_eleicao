@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Fornecedores</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+            <link rel="stylesheet" href="/css/style.css">
+
+        </head>
+        <body>
+            <header class="header">
+                <div class="header-value">
+                   <!-- <button onclick="window.history.back()" class="button-left"> -->
+                      <i onclick="window.history.back()" class="fa-solid text-light fa-chevron-left button-left"></i>
+                   <!-- </button> -->
+                   <div class="logo-conteiner">
+                      <h2>Vota Aqui</h2>
+                      <i class="fa-solid  fa-puzzle-piece"></i>
+                   </div>
+                </div>
+             </header>
+            <main>
+                    <div class="container">
+                        <form action="/eleicao" method="POST">
+                            <h2>Nova Eleição</h2>
+                            <div class="rows-input">
+                                <div>
+                                    <label for="date">Data da Eleição:</label><br>
+                                    <input class="input is-link " type="date" id="data" name="data" required><br>
+                                </div>
+                                <div>
+                                    <label for="local">Local da Eleição:</label>
+                                    <input class="input is-link " type="text" id="local" name="local" placeholder="Insira o local..." required><br>
+                                </div>
+                            </div>
+                            <div class="rows-input">
+                                <div>
+                                    <label for="horaInicial">Hora Inicial da Eleição:</label>
+                                    <input class="input is-link " type="time" id="horaInicial" name="horaInicial" required><br>
+                                </div>
+                                <div>
+                                    <label for="horaFinal">Hora Final da Eleição:</label>
+                                    <input class="input is-link " type="time" id="horaFinal" name="horaFinal" required><br>
+                                </div>
+                            </div>
+                        </form>
+                            <div class="conteiner-button">
+                                <button class="button is-success" type="submit">Cadastrar</button>
+                                <a class="button is-info" href="/">Cancelar</a>
+                            </div>
+                    </div>
+            </main>
+        </body>
+</html>

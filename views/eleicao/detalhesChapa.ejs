@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <link rel="stylesheet" href="/css/detalhesChapas.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-value">
+           <!-- <button onclick="window.history.back()" class="button-left"> -->
+              <i onclick="window.history.back()" class="fa-solid fa-chevron-left button-left"></i>
+           <!-- </button> -->
+           <div class="logo-conteiner">
+              <h2>Vota Aqui</h2>
+              <i class="fa-solid fa-puzzle-piece"></i>
+           </div>
+        </div>
+    </header>   
+    <main class="main-conteiner">
+        <div class="container mt-5">
+            <div class="text-info-header">
+                <h2 class="mb-4 font-weight-bold subtitle-page">Chapa <%= chapa[0].Nome %></h2>
+                <p>Adicione candidatos para eleger e seus cargos</p>
+            </div>
+            <div class="table-responsive">
+               <div class="conteiner-table"> 
+                   <% candidatos.forEach(candidato => { %>
+                    <form action="/candidatochapa/" method="post">
+                            <ul class="table-header">
+                                <li><%= candidato.Nome %></li>
+                                <li class="align-select-a">
+                                    <select name="cargoId">
+                                        <% cargos.forEach(cargo => { %>
+                                            <option value="<%= cargo.CargoID %>"><%= cargo.Nome %></option>
+                                            <%= console.log("eleicao dentro de detalhe chapa view", eleicaoId) %>
+                                        <% }); %>
+                                    </select>
+                                    <input type="hidden" name="candidatosId" value="<%= candidato.CandidatoID %>">
+                                    <input type="hidden" name="chapaId" value="<%= chapaId %>">
+                                    <button type="submit" class="button is-info is-light">Adicionar na Chapa</button>
+                                </li>
+                            </ul>
+                        </form> 
+                    <% }); %>
+               </div>
+            </div>
+         </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <link rel="stylesheet" href="/css/detalhesChapas.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-value">
+           <!-- <button onclick="window.history.back()" class="button-left"> -->
+              <i onclick="window.history.back()" class="fa-solid fa-chevron-left button-left"></i>
+           <!-- </button> -->
+           <div class="logo-conteiner">
+              <h2>Vota Aqui</h2>
+              <i class="fa-solid  fa-puzzle-piece"></i>
+           </div>
+        </div>
+    </header>   
+    <main class="main-conteiner ">
+        <div class="container mt-5">
+            <div class="text-info-header">
+                <h2 class="mb-4 font-weight-bold subtitle-page">Candidatos da chapa </h2>
+                <p>Adicione cadidatos para eleger e seu cargos</p>
+            </div>
+            <div class="table-responsive">
+                <div class="conteiner-table"> 
+                   <div class="text-info-header">
+                        <p>Adicione cadidatos para eleger e seu cargos</p>
+                   </div>
+                   <% candidatos.forEach(candidato => { %>
+                            <ul class="table-header">
+                                <li><%= candidato.Nome %></li>
+                                <li><%= candidato.Cargo %></li>
+                                <li class="align-select-a">
+                                    <form action="/candidatochapa/<%= candidato.CandidatoID%>" method="POST">
+                                        <button type="submit" class="button is-info is-light">Remover</button>
+                                    </form>
+                                </li>
+                            </ul>
+                    <% }); %>
+               </div>
+            </div>
+            <%= console.log("eleicao dentro do chapa view: ", eleicaoId) %>
+            <a href="/eleicao/<%= eleicaoId %>/<%= chapaId %>/candidatoschapa" class="button is-link">Adicionar Candidatos</a>
+         </div>
+    </main>
+</body>
+</html>

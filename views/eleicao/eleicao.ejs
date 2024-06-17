@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Cadastrar Candidatos</title>
+   <!-- <link href="https://getbootstrap.com//docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+   <link rel="stylesheet" href="/css/eleicao.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="header-value">
+        <!-- <button onclick="window.history.back()" class="button-left"> -->
+           <i onclick="window.history.back()" class="fa-solid text-light fa-chevron-left button-left"></i>
+        <!-- </button> -->
+        <div class="logo-conteiner">
+           <h2>Vota Aqui</h2>
+           <i class="fa-solid  fa-puzzle-piece"></i>
+        </div>
+     </div>
+</header>
+<main class="main-conteiner">
+  <div class="conteiner">
+      <div class="container mt-5">
+        <div class="text-info-header">
+            <h2 class="subtitle">Eleições iniciadas</h2> 
+            <p>Cadastre candidatos e suas chapas dentro das eleições.</p>
+        </div>
+
+        <div class="table-responsive">
+                
+                        <% eleicoes.forEach((eleicao, index) => { %>
+                            <ul class="table-header">
+                                <li><%= eleicao.EleicaoID %></li>
+                                <li class="data"><%= eleicao.Data %></li>
+                                <li><%= eleicao.Local %></li>
+                                <li><%= eleicao.Inicio %></li>
+                                <li><%= eleicao.Fim %></li>
+                                <li>
+                                    <a href="/eleicao/<%= eleicao.EleicaoID %>" class="button is-dark">Ir para Eleição</a>
+                                </li>
+                            </ul>
+                        <% }); %>
+        </div>
+        <div class="text-info">
+            <p >Inicie agora mesmo uma nova eleição.</p>
+            <a href="/cadastroEleicao" class="button is-link">Nova Eleição</a>
+        </div>
+   </div>
+</main>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-urZbA+l6S4GHevO9TmBndXeLl7/J8SRvJq6etK0VNXQdW0Vjrm++8eZFCsVZ7k4V" crossorigin="anonymous"></script> -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const dateElements = document.querySelectorAll('.data');
+    dateElements.forEach(element => {
+        const date = new Date(element.textContent);
+        element.textContent = date.toLocaleDateString('pt-BR', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+        });
+    });
+});
+</script>
+</body>
+</html>

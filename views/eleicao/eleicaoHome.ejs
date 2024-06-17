@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Cadastrar Candidatos</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <link rel="stylesheet" href="/css/eleicaohome.css">
+   </head>
+   <body>
+
+     
+      <header class="header">
+         <div class="header-value">
+            <!-- <button onclick="window.history.back()" class="button-left"> -->
+               <i onclick="window.history.back()" class="fa-solid fa-chevron-left button-left"></i>
+            <!-- </button> -->
+            <div class="logo-conteiner">
+               <h2>Vota Aqui</h2>
+               <i class="fa-solid  fa-puzzle-piece"></i>
+            </div>
+         </div>
+      </header>   
+      <main class="main-conteiner">
+         <h2>Eleição <%= eleicao[0].Local %></h2>
+         <div class="conteiner-content">
+            <a href="/eleicao/<%= eleicao[0].EleicaoID %>/chapas"  class="card-eleicao">
+               <div class="content-card">
+                  <i class="fa-solid fa-check-to-slot"></i>
+                  <p>Chapas</p>
+               </div>
+            </a>
+            <a href="/candidatos" class="card-eleicao">
+               <div class="content-card">
+                  <i class="fa-solid fa-user"></i>
+                  <p>Candidatos</p>
+               </div>
+            </a>
+            
+            <a href="/eleicao/<%= eleicao[0].EleicaoID %>/cargos" class="card-eleicao">
+                <div class="content-card">
+                    <i class="fa-solid fa-user-group"></i>
+                    <p>Cargos</p>
+                </div>
+            </a>
+         </div>
+      </main>
+   </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Candidatos</title>
+    <!-- Adicione o link para o CSS do Bootstrap -->
+    <link href="https://getbootstrap.com//docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-
+EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Editar Candidato</h2>
+        <div class="table-responsive">
+            <form action="/fornecedores/<%= fornecedor.Id %>/edit" method="POST">
+                <table class="table table-striped">
+                    <tr>
+                        <td> <label for="nome">Nome do Candidato:</label>
+                        </td>
+                        <td> <input type="text" id="nome" name="nome" value="<%=
+fornecedor.Fornecedor %>" required> </td>
+                    </tr>
+                    <tr>
+                        <td> <label for="telefone">Vice:</label></td>
+                        <td> <input type="text" id="telefone" name="telefone" value="<%= fornecedor.Telefone %>"
+                                required></td>
+                    </tr>
+                    <tr>
+                        <td> <label for="revendedor">Chapa:</label> </td>
+                        <td><input type="text" id="revendedor" name="revendedor" value="<%= fornecedor.Revendedor %>"
+                                required></td>
+                    </tr>
+                    </table>
+
+                    <button type="submit" class="btn btn-success">Salvar
+                        Alterações</button>
+                    <div><br>
+                        <a href="/fornecedores" class="cancel-button btn btn-danger">
+                            Cancelar</a>
+                    </div><br>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
