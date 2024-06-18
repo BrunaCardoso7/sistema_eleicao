@@ -36,26 +36,16 @@ router.get('/cadastroCargo/:id', (req, res) => {
 });
 
 
-router.get('/cadastroCandidato', (req, res) => {
-    res.render('eleicao/cadastrocandidato');
+router.get('/cadastroCandidato/:id', (req, res) => {
+    const eleicaoId = req.params.id
+
+    res.render('eleicao/cadastrocandidato', {eleicaoId});
 });
+
 router.get('/detailschapa', (req, res) => {
     res.render('eleicao/detalhesChapa');
 });
 
-
-// router.get('/candidato', (req, res) => {
-//     res.render('eleicao/candidatoHome');
-// });
-
-// router.get('/candidato', (req, res) => {
-//     res.render('eleicao/candidatoHome');
-// });
-
-
-// router.get('/candidatoChapa', (req, res) => {
-//     res.render('eleicao/candidatoChapa');
-// });
 
 router.post('/login', usuarioController.login);
 router.get('/welcome', usuarioController.welcome);

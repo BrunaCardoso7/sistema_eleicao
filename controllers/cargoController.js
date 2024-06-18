@@ -27,11 +27,12 @@ async function findAllCargosController (req, res) {
 }
 async function deleteFindByIdCargo (req, res) {
     try {
-        const {id} = req.body
+        const {id, eleicaoid} = req.params
 
-        const cargos = await cargosModel.deleteByIdCargos(id)
 
-        return res.status(200).send({"Deletado com sucesso": cargos})
+        await cargosModel.deleteByIdCargos(id)
+
+        return res.redirect(`/eleicao/${eleicaoid}/cargos`)
     } catch (error) {
         throw error
     }

@@ -44,11 +44,11 @@ async function findAllChapasByEleicaoController(req, res) {
 
 async function deleteByIdChapaController (req, res) {
     try {
-        const {id} = req.params
+        const {id, eleicaoid} = req.params
 
-        const chapa = await chapasModels.findAllByEleicaoChapas(id)
+        await chapasModels.deleteByIdChapa(id)
 
-        return res.status(200).send({"Deletado com sucesso": chapa})
+        return res.redirect(`/eleicao/${eleicaoid}/chapas`)
     } catch (error) {
         throw error
     }

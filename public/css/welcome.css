@@ -1,0 +1,62 @@
+@import url('./global.css');
+
+.main-conteiner {
+    width: 100vw;
+    height: 90vh;
+    padding: 100px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:  space-evenly;
+}
+.title-subtitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title-subtitle h2{
+    font-size: 3rem ;
+    color: var(--color-text-primary);
+}
+.title-subtitle p {
+    font-size: 1.4rem;
+    text-align: center;
+    width: 70%;
+}
+.conteiner-content{
+    display: flex;
+    width: 70vw;
+    gap: 30px;
+    justify-content: space-between;
+
+}
+.card-eleicao{
+    width: 500px;
+    height: 300px;
+    box-shadow: var(--color-black-shadow);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var( --color-secundary);;
+}
+.card-eleicao:hover{
+    background-color: var(--color-secundary-hover);
+}
+.content-card{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px;
+}
+.content-card i {
+    font-size: 5rem;
+    color: var(--color-hover-white);
+}
+.content-card p {
+    font-size: 2rem;
+    color: var(--color-hover-white);
+    font-weight: 500;
+}

@@ -39,9 +39,9 @@ async function findCandidatosByChapa(id) {
     }
 }
 
-async function deleteCandidato(nome) {
+async function deleteCandidato(candidatoId) {
     try {
-        const candidato = await pool.query("DELETE FROM Candidato WHERE nome = ?", [nome])
+        const candidato = await pool.query("DELETE FROM Candidato WHERE CandidatoID = ?", [candidatoId])
         return candidato
     } catch (error) {
         throw error;

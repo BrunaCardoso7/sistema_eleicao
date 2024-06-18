@@ -1,7 +1,7 @@
 const candidatosModel = require("../models/candidatosModel");
 
 async function createCandidatos(req, res) {
-    const { nome, cpf, endereco } = req.body;
+    const { nome, cpf, endereco, eleicao_id } = req.body;
     console.log(nome, cpf, endereco)
     try {
         if (!nome || !cpf || !endereco) {
@@ -9,7 +9,7 @@ async function createCandidatos(req, res) {
         }
         await candidatosModel.createCandidatos(nome, cpf, endereco);
 
-        return res.render('eleicao/candidatoHome');
+        return res.redirect(`/candidatos/${eleicao_id}`);
     } catch (error) {
         console.error('Erro ao inserir candidato:', error);
         res.render('error', { message: 'Erro ao inserir candidato', returnLink: '/welcome' });
@@ -17,9 +17,11 @@ async function createCandidatos(req, res) {
 }
 async function listCandidatos(req, res) {
     try {
+        const eleicaoId = req.params.id
         const candidatos = await candidatosModel.findAllCandidatos();
         console.log(candidatos)
-        return res.render('eleicao/candidatoHome' ,{ candidatos })
+
+        return res.render('eleicao/candidatoHome' ,{ candidatos,eleicaoId })
     } catch (error) {
         console.error("Erro ao buscar candidatos", error);
         res.render("error", { message: "Erro ao buscar candidatos" })
@@ -41,15 +43,13 @@ async function listCandidatosByChapas(req, res) {
 }
 
 async function deleteCandidato(req, res) {
-    // const id = req.params.id; // Passado como parâmetro no front
-    const { nome } = req.body;
+    const eleicaoId = req.params.eleicaoid; 
+    const candidatoId = req.params.id; 
     try {
-        const candidato = await candidatosModel.deleteCandidato(nome);
-        if (!candidato) {
-            res.status(404).send("Candidato não encontrado!")
-        }
-        await candidatosModel.deleteCandidato(candidato.nome);
-        return res.status(200).send('Candidato excluído com sucesso');
+
+        await candidatosModel.deleteCandidato(candidatoId);
+        
+        return res.redirect(`/candidatos/${eleicaoId}`)
     } catch (error) {
         console.error('Erro ao deletar fornecedor:', error);
         res.status(500).send('Erro ao deletar candidato');

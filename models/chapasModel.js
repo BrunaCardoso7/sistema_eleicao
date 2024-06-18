@@ -47,7 +47,7 @@ async function findAllByEleicaoChapas(id) {
 
 async function deleteByIdChapa(id) {
     try {
-        const chapa = await pool.query('DELETE FROM Voto WHERE ChapaID = ?', [id])
+        const chapa = await pool.query('DELETE FROM Chapa WHERE ChapaID = ?', [id])
         return chapa
     } catch (error) {
         throw error

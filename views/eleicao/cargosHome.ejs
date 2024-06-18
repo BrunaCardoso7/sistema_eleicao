@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Chapas</title>
-    <link href="https://getbootstrap.com//docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"> 
+    <link rel="stylesheet" href="/css/global.css">>
     <link rel="stylesheet" href="/css/chapahome.css">
 </head>
 <body>
@@ -19,28 +19,33 @@
             </div>
         </div>
     </header>   
-    <main class="main-conteiner">
-        <div class="container mt-5">
+    <main class="conteiner">
+        <div class="">
             <div class="text-info-header">
-                <h2 class="mb-4 font-weight-bold subtitle-page">Cargos Registrados</h2>
+                <h2 class="subtitle">Cargos Registrados</h2>
                 <p>Cadastre os cargos dessa eleição</p>
             </div>
             <div class="table-responsive">
-                <div class="conteiner-table">
+      
                     <% cargos.forEach(cargo => { %>
                         <ul class="table-header">
                             <li><%= cargo.Nome %></li>
                             <li>
-                                <a href="" class="btn btn-primary">Ver Detalhes</a>
-                                <a class="btn btn-danger">Deletar</a>
+                                <a href="" class="button button-secundary">Ver Detalhes</a>
+                                <form action="/cargos/<%= cargo.CargoID %>/<%= eleicaoId %>?_method=DELETE" method="post">
+                                    <button type="submit" class="button button is-danger is-light">Deletar</button>
+                                </form>
                             </li>
                         </ul>
                     <% }); %>
-                </div>
+
             </div>
             <div class="text-info">
                 <p>Cadastre agora mesmo um novo cargo.</p>
-                <a href="/cadastroCargo/<%= eleicaoId %>" class="btn btn-primary">Novo cargo</a>
+                <div class="conteiner-button">
+                    <a href="/" class="button is-back">Voltar</a>
+                    <a href="/cadastroCargo/<%= eleicaoId %>" class="button button-primary">Novo cargo</a>
+                </div>
             </div>
         </div>
     </main>

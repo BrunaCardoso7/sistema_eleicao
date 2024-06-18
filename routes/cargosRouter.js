@@ -4,7 +4,7 @@ const cargoController = require('../controllers/cargoController')
 
 router.post('/', cargoController.createCargosController)
 router.get('/', cargoController.findAllCargosController)
-router.delete('/', cargoController.deleteFindByIdCargo)
+router.delete('/:id/:eleicaoid', cargoController.deleteFindByIdCargo)
 router.patch('/', cargoController.updateByIdCargoController)
 
 module.exports = router

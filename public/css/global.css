@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    /* font-family: "Roboto", sans-serif; */
+    text-decoration: none;
+    box-sizing: border-box;
+}
+:root {
+    --color-header: #b68752;
+    --color-primary: #492929;
+    --color-secundary: #b68752;
+    --color-secundary-hover: #a77c4b;
+    --color-primary-hover: #3a2020;
+    --color-text-primary: #444343;
+    --color-black-shadow: 1px 1px 8px #00000052;
+    --color-hover-white: #eeeeee;
+    --color-button-complamentary: #d3d3d3;
+    --color-button-complamentary-hover: #b4b4b4;
+}
+body {
+    background-color: #f7f2ed;
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto;
+    overflow: hidden;
+    text-decoration: none;
+    user-select: none;
+}
+.header{
+    width: 90vw;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    align-items: center;
+    border-radius: 14px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.233);
+    margin: 8px;
+    padding: 14px;
+    background-color: var(--color-header);
+}
+.header-value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: fit-content;
+    gap: 50px;
+}
+.header-value h2{
+    color: rgb(255, 255, 255);
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin: 0 !important;
+}
+.logo-conteiner{
+    padding-left: 24px;
+    display: flex;
+    gap: 6px;
+    cursor: pointer;
+}
+.logo-conteiner i{
+    color: var(--color-primary) !important;
+    font-size: 1.4rem;
+}
+.button-left{
+    width: 34px;
+    height: 34px;
+    display: flex;
+    color: var() !important;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    border: none;
+    background-color: transparent;
+}
+.button-left:hover {
+    color: rgb(255, 255, 255) !important;
+    background-color: var(--color-secundary-hover);
+    border-radius: 100%;
+}
+.button-left {
+    color: white;
+    font-size: 1.6rem;
+}
+.logo-conteiner{
+    display: flex;
+    gap: 1px;
+    cursor: pointer;
+}
+.conteiner-button {
+    display: flex;
+    align-items: center;
+    gap: 120px;
+}
+.button-primary {
+    background-color: var(--color-primary) !important;
+    min-width: 200px;
+    width: fit-content;
+    font-size: 1.2rem;
+    border: none;
+}
+.button-primary:hover {
+    background-color: var(--color-primary-hover) !important;
+}
+.button-secundary {
+    background-color: var(--color-primary) !important;
+    border: none;
+}
+.button-secundary:hover {
+    background-color: var(--color-primary-hover) !important;
+}
+.is-back {
+    background-color: var(--color-button-complamentary) !important;
+    min-width: 200px;
+    font-size: 1.2rem;
+    border: none;
+    color: var(--color-text-primary);
+    width: fit-content;
+}
+.is-back:hover {
+    background-color: var(--color-button-complamentary-hover) !important;
+}
+li {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
