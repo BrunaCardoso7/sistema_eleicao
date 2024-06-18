@@ -20,17 +20,16 @@
            </div>
         </div>
     </header>   
-    <main class="main-conteiner">
-        <div class="container mt-5">
+    <main class="conteiner">
+        <div class="">
             <div class="text-info-header">
-                <h2 class="mb-4 font-weight-bold subtitle-page">Chapa <%= chapa[0].Nome %></h2>
-                <p>Adicione candidatos para eleger e seus cargos</p>
+                <h2 class="mb-4 font-weight-bold subtitle">Adicione candidatos na chapa <%= chapa[0].Nome %></h2>
+                <p>Selecione o cargo do candidato e adicione na chapa. </p>
             </div>
             <div class="table-responsive">
-               <div class="conteiner-table"> 
                    <% candidatos.forEach(candidato => { %>
-                    <form action="/candidatochapa/" method="post">
-                            <ul class="table-header">
+                    <form class="table-header" action="/candidatochapa/" method="post">
+                            <ul>
                                 <li><%= candidato.Nome %></li>
                                 <li class="align-select-a">
                                     <select name="cargoId">
@@ -46,8 +45,8 @@
                             </ul>
                         </form> 
                     <% }); %>
-               </div>
             </div>
+            <a href="/eleicao/<%= eleicaoId %>/<%= chapa[0].ChapaID %>/candidatos" class="button is-back">Voltar</a>
          </div>
     </main>
 </body>
