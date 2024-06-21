@@ -1,11 +1,8 @@
 const pool = require('../db')
-async function createEleicao (data, local) {
+async function createEleicao (data, local, inicio, fim) {
     try {
-        await pool.query('INSERT INTO Eleicao (Data, Local) VALUES (?, ?)',
-        [data, local])
-
-        const [eleicao] = await pool.query('SELECT * FROM Eleicao WHERE Data  LIKE ?', 
-        [`%${data}%`])
+        await pool.query('INSERT INTO Eleicao (Data, Local, Inicio, fim) VALUES (?, ?, ?, ?)',
+        [data, local, inicio, fim])
          
         return eleicao
     } catch (error) {

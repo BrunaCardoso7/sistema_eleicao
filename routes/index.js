@@ -9,6 +9,7 @@ const votosRouter = require('./votosRouter')
 const candidatoRouter = require('./candidatos');
 const eleitorRouter = require('./eleitores');
 const candidatoChapaRouter = require('./candidatoChapaRouter');
+const eleitoresModel = require('../models/eleitoresModel')
 
 router.get('/', (req, res) => {
     res.render('welcome');
@@ -44,6 +45,32 @@ router.get('/cadastroCandidato/:id', (req, res) => {
 
 router.get('/detailschapa', (req, res) => {
     res.render('eleicao/detalhesChapa');
+});
+
+router.get('/mainpage', (req, res) => {
+    res.render('votacao/mainPage');
+});
+
+router.get('/eleitor', (req, res) => {
+    res.render('votacao/eleitoresCadastro');
+});
+
+router.get('/updateeleitor/:id', async(req, res) => {
+
+    const eleitorId = req.params.id
+
+    const eleitor = await eleitoresModel.findbyIdEleitor(eleitorId)
+
+    res.render('votacao/updateEleitor', {eleitorId, eleitor});
+});
+
+router.get('/liberacao', async(req, res) => {
+
+    const eleitorId = req.params.id
+
+    const eleitores = await eleitoresModel.findAllEleitor()
+
+    res.render('votacao/eleitoresliberacao', {eleitorId, eleitores});
 });
 
 

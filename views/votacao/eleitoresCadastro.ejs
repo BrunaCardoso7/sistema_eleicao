@@ -23,26 +23,26 @@
              </header>
             <main>
                     <div class="container">
-                        <form action="/eleicao/" method="post">
-                            <h2>Nova Eleição</h2>
+                        <form action="/eleitores/" method="POST">
+                            <h2>Cadastrar Eleitor</h2>
                             <div class="rows-input">
                                 <div>
-                                    <label for="date">Data da Eleição:</label><br>
-                                    <input class="input is-link " type="date" id="data" name="data" required><br>
+                                    <label for="date">Nome do eleitor:</label><br>
+                                    <input class="input is-link " type="text" id="data" name="nome" required>
                                 </div>
                                 <div>
-                                    <label for="local">Local da Eleição:</label>
-                                    <input class="input is-link " type="text" id="local" name="local" placeholder="Insira o local..." required><br>
+                                    <label for="local">CPF:</label>
+                                    <input class="input is-link " type="text" id="cpf" name="cpf" required>
                                 </div>
                             </div>
                             <div class="rows-input">
                                 <div>
-                                    <label for="horaInicial">Hora Inicial da Eleição:</label>
-                                    <input class="input is-link " type="datetime" id="horaInicial" name="inicio" required><br>
+                                    <label for="horaInicial">Endereço:</label>
+                                    <input class="input is-link " type="text" id="horaInicial" name="endereco" required>
                                 </div>
                                 <div>
-                                    <label for="horaFinal">Hora Final da Eleição:</label>
-                                    <input class="input is-link " type="datetime" id="horaFinal" name="fim" required><br>
+                                    <label for="horaFinal">Senha:</label>
+                                    <input class="input is-link " type="text" id="horaFinal" name="senha" required>
                                 </div>
                             </div>
                             <div class="conteiner-button">
@@ -52,5 +52,17 @@
                         </form>
                     </div>
             </main>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('cpf').addEventListener('input', function (e) {
+                        let value = e.target.value;
+                        value = value.replace(/\D/g, ''); // Remove qualquer caractere que não seja número
+                        value = value.replace(/(\d{3})(\d)/, '$1.$2'); // Adiciona um ponto após os primeiros 3 dígitos
+                        value = value.replace(/(\d{3})(\d)/, '$1.$2'); // Adiciona um ponto após os próximos 3 dígitos
+                        value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Adiciona um hífen antes dos últimos 2 dígitos
+                        e.target.value = value;
+                    });
+                });
+            </script>
         </body>
 </html>

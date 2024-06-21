@@ -54,10 +54,10 @@
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('cpf').addEventListener('input', function (e) {
                 let value = e.target.value;
-                value = value.replace(/\D/g, ''); // Remove qualquer caractere que não seja número
-                value = value.replace(/(\d{3})(\d)/, '$1.$2'); // Adiciona um ponto após os primeiros 3 dígitos
-                value = value.replace(/(\d{3})(\d)/, '$1.$2'); // Adiciona um ponto após os próximos 3 dígitos
-                value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Adiciona um hífen antes dos últimos 2 dígitos
+                value = value.replace(/\D/g, '');
+                value = value.replace(/(\d{3})(\d)/, '$1.$2'); 
+                value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
                 e.target.value = value;
             });
         });

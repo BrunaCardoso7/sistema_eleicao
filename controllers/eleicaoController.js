@@ -2,12 +2,10 @@ const eleicaoModel = require('../models/eleicaoModel')
 
 async function createEleicaoController (req, res) {
     try {
-        const {data, local} = req.body
-        if (!data || !local ) {
-            return res.status(400).send({"msg": "Falta dados"})
-        }
-        const eleicao = await eleicaoModel.createEleicao(data, local)
-        return res.status(200).send({"msg": "eleição criada com sucesso", eleicao})
+        const {data, local, inicio, fim} = req.body
+
+        await eleicaoModel.createEleicao(data, local, inicio, fim)
+        return res.redirect('/eleicao/')
     } catch (error) {
         throw error
     }

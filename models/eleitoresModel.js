@@ -10,10 +10,31 @@ async function createEleitor(nome, cpf, endereco, senha, aptoAVotar=0) {
         throw error;
     }
 }
-
+async function loginEleitor(cpf, senha) {
+    try {
+        const eleitor = await pool.query("SELECT * FROM Eleitor WHERE CPF = ? AND Senha = ?",
+            [cpf, senha]
+        )
+        
+        return eleitor;
+    } catch (error) {
+        throw error;
+    }
+}
 async function findAllEleitor() {
     try {
         const [eleitor] = await pool.query("SELECT * FROM Eleitor")
+        return eleitor;
+    } catch (error) {
+        throw error;
+    }
+}
+
+async function findbyIdEleitor(id) {
+    try {
+        const [eleitor] = await pool.query("SELECT * FROM Eleitor WHERE EleitorID = ?",
+            [id]
+        )
         return eleitor;
     } catch (error) {
         throw error;
@@ -29,10 +50,20 @@ async function deleteEleitor(id) { //id
     }
 }
 
-async function updateEleitor(EleitorID, nome, endereco, senha) {
+async function updateEleitor(EleitorID, nome, cpf, endereco, senha, aptoAVotar) {
     try {
-        const eleitor = await pool.query("UPDATE Eleitor SET nome = ?, endereco = ?, senha = ? WHERE EleitorID = ?",
-            [nome, endereco, senha, EleitorID]);
+        const eleitor = await pool.query("UPDATE Eleitor SET Nome = ?, CPF = ?, Endereco = ?, Senha = ?, AptoAVotar = ? WHERE EleitorID = ?",
+            [nome, cpf, endereco, senha, aptoAVotar, EleitorID]);
+        return eleitor
+    } catch (error) {
+        throw error;
+    }
+}
+
+async function updateAptoVotarEleitor(EleitorID, aptoAVotar) {
+    try {
+        const eleitor = await pool.query("UPDATE Eleitor SET AptoAVotar = ? WHERE EleitorID = ?",
+            [aptoAVotar, EleitorID]);
         return eleitor
     } catch (error) {
         throw error;
@@ -44,5 +75,8 @@ module.exports = {
     createEleitor,
     findAllEleitor,
     deleteEleitor,
-    updateEleitor
+    updateEleitor,
+    findbyIdEleitor,
+    updateAptoVotarEleitor,
+    loginEleitor
 };

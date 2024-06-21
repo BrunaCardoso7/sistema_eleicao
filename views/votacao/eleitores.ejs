@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+        <link rel="stylesheet" href="/css/detalhesChapas.css">
+    </head>
+    <body>
+        <header class="header">
+            <div class="header-value">
+                <i onclick="window.history.back()" class="fa-solid fa-chevron-left button-left"></i>
+                <div class="logo-conteiner">
+                    <h2>Vota Aqui</h2>
+                    <i class="fa-solid fa-puzzle-piece"></i>
+                </div> 
+            </div>
+        </header>   
+        <main class="conteiner">
+            <div>
+                <div class="text-info-header">
+                    <h2 class="mb-4 font-weight-bold subtitle">Eleitores</h2>
+                </div>
+                <div class="table-responsive">
+                    <% eleitores.forEach(eleitor => { %>
+                        <form class="table-header" action="/candidatochapa/" method="post">
+                                <ul>
+                                    <li><%= eleitor.Nome %></li>
+                                    <li><%= eleitor.CPF %></li>
+                                    <li><%= eleitor.Endereco %></li>
+                                    <li><%= eleitor.AptoAVotar ===  true ? 'Sim' : 'Não' %></li>
+                                    <li class="align-select-a">
+                                        <form action="/eleitores/<%= eleitor.EleitorID %>?_method=DELETE" method="post">
+                                            <button type="submit" class="button is-info is-light">Excluir</button>
+                                        </form>
+                                        <!-- <form action="/eleitores/<%= eleitor.EleitorID %>?_method=PATCH" method="post">
+                                            <button type="submit" class="button is-info is-light">Editar</button>
+                                        </form> -->
+                                        <a href="/updateeleitor/<%= eleitor.EleitorID %>" type="submit" class="button is-info is-light">Editar</a>
+                                    </li>
+                                </ul>
+                            </form> 
+                        <% }); %>
+                </div>
+                <a href="/eleitor" class="button button-primary">Cadastrar Eleitor</a>
+                <a href="" class="button is-back">Voltar</a>
+            </div>  
+        </main>
+    </body>
+</html>
