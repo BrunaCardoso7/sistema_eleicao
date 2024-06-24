@@ -34,12 +34,29 @@ async function findAllChapasByEleicaoController(req, res) {
         console.log('eleicaoId: ', eleicaoId)
 
         const chapas = await chapasModels.findAllByEleicaoChapas(eleicaoId);
+        
         return res.render('eleicao/chapaHome', { chapas, eleicaoId });
     } catch (error) {
         console.error(error);
         return res.status(500).send('Erro ao buscar chapas');
     }
 }
+
+async function findAllChapasByEleitoresController(req, res) {
+    try {
+        const eleicaoId = req.params.id;
+
+        console.log('eleicaoId: ', eleicaoId)
+
+        const chapas = await chapasModels.findAllByEleicaoChapas(eleicaoId);
+
+        return res.render('votacao/votacao', { chapas, eleicaoId });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).send('Erro ao buscar chapas');
+    }
+}
+
 
 
 async function deleteByIdChapaController (req, res) {
@@ -103,6 +120,20 @@ async function FindCandidatosInChapas (req, res) {
     }
 }
 
+async function FindCandidatosInChapasFromEleitores (req, res) {
+    try {
+        const eleicaoId = req.params.id
+        const chapaId = req.params.idchapa
+
+        const chapa = await chapasModels.findChapasById(chapaId)
+
+        const candidatos = await candidatoModel.findCandidatosByChapa(chapaId)
+
+        return res.render('votacao/detalheChapa', {chapa, candidatos, chapaId, eleicaoId})
+    } catch (error) {
+        throw error
+    }
+}
 
 module.exports = {
     createChapasController,
@@ -111,5 +142,7 @@ module.exports = {
     updateByIdChapaController,
     findAllChapasByEleicaoController,
     findAllCandidatosAndCagos,
-    FindCandidatosInChapas
+    FindCandidatosInChapas,
+    findAllChapasByEleitoresController,
+    FindCandidatosInChapasFromEleitores
 }

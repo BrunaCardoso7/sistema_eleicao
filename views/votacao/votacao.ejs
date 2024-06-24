@@ -27,12 +27,11 @@
 
             </div>
             <div class="table-responsive">
-         
                   <% chapas.forEach(chapa => { %>
                      <ul class="table-header">
                         <li><%= chapa.Nome %></li>
                         <li>
-                           <a href="/eleicao/<%= eleicaoId %>/<%= chapa.ChapaID %>/candidatos" class="button button-secundary">Ver Detalhes</a>
+                           <a href="/eleicao/<%= eleicaoId %>/<%= chapa.ChapaID %>/candidatos/eleitores" class="button button-secundary ">Ver Detalhes</a>
                            <form action="/chapas/<%= chapa.ChapaID %>/<%= eleicaoId %>?_method=DELETE" method="post">
                               <button type="submit" class="button button is-danger is-light">Votar</button>
                           </form>
@@ -44,5 +43,6 @@
             
          </div>
       </main>
+     
    </body>
 </html>

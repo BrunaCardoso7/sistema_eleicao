@@ -1,9 +1,9 @@
 const pool = require('../db')
 async function createEleicao (data, local, inicio, fim) {
     try {
-        await pool.query('INSERT INTO Eleicao (Data, Local, Inicio, fim) VALUES (?, ?, ?, ?)',
+        const eleicao = await pool.query('INSERT INTO Eleicao (Data, Local, Inicio, fim) VALUES (?, ?, ?, ?)',
         [data, local, inicio, fim])
-         
+
         return eleicao
     } catch (error) {
         throw error

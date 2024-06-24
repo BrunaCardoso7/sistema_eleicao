@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"> 
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/detalhesChapas.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-value">
+           <a href="/eleicao/<%= eleicaoId %>"><i class="fa-solid fa-chevron-left button-left"></i></a>
+           <a href="/" class="logo-conteiner">
+              <h2>Vota Aqui</h2>
+              <i class="fa-solid  fa-puzzle-piece"></i>
+           </a>
+        </div>
+    </header>
+    <main class="conteiner ">
+        <div class="">
+            <div class="text-info-header">
+                <h2 class="mb-4 font-weight-bold subtitle">Membros da chapa <%= chapa[0].Nome %></h2>
+                <p>Esses são os principais candidatos dessa chapa.</p>
+            </div>
+            <div class="table-responsive-details">
+                   <% candidatos.forEach(candidato => { %>
+                            <ul class="details-person">
+                                <li><p>Nome: </p><%= candidato.Nome %></li>
+                                <li><p>Cargos: </p><%= candidato.Cargo %></li>
+                            </ul>
+                    <% }); %>
+            </div>
+            <div class="conteiner-button">
+                <a href="/eleicao/<%= eleicaoId %>/chapas" class="button is-back">Voltar</a>
+            </div>
+         </div>
+    </main>
+</body>
+</html>

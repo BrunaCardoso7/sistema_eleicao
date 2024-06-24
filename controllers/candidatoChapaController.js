@@ -2,16 +2,15 @@ const candidatoChapaModel = require('../models/candidato_chapaModel')
 
 async function createCandidatoChapaController (req, res) {
     try {
-        const {candidatosId, chapaId, cargoId} = req.body
+        const {candidatosId, chapaId, cargoId, eleicaoId} = req.body
 
-        const eleicaoId = req.params.id
         if (!candidatosId || !chapaId|| !cargoId) {
             return res.status(400).send({"msg": "Falta dados"})
         } 
 
-        console.log("chegaram até a api", candidatosId, chapaId, cargoId)
+        console.log("chegaram até a api", candidatosId, chapaId, cargoId,eleicaoId)
 
-        await candidatoChapaModel.createCandidatoChapa(candidatosId, chapaId, cargoId)
+        await candidatoChapaModel.createCandidatoChapa(candidatosId, chapaId, cargoId,eleicaoId)
 
         return res.redirect(`/eleicao/${eleicaoId}/${chapaId}/candidatos`)
     } catch (error) {

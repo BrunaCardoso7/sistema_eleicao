@@ -4,7 +4,11 @@ async function createEleicaoController (req, res) {
     try {
         const {data, local, inicio, fim} = req.body
 
-        await eleicaoModel.createEleicao(data, local, inicio, fim)
+        const inicioFormatado = `${data} ${inicio}:00` 
+        const fimFormatado = `${data} ${fim}:00` 
+
+
+        await eleicaoModel.createEleicao(data, local, inicioFormatado, fimFormatado)
         return res.redirect('/eleicao/')
     } catch (error) {
         throw error
